@@ -1,0 +1,77 @@
+/* The single source of colour, type and depth for every screen on every platform.
+   Screens use the semantic names below; the brand palette appears only here.
+
+   Brand palette (2026-09):
+   cobalt blue #2563FF  main accent: primary buttons, selection, progress
+   aqua        #00D7E6  sub: charts and quiet highlights
+   purple      #7C5CFC  sub/charts
+   coral       #FF7A6B  point: notification dots, the logo spark, small alerts
+   white       #FFFFFF  base background
+   charcoal    #1F2430  text
+   The logo mark keeps its own navy #1F355E.
+
+   Text stays charcoal or grey. Colour is for actions, state and data, not for words. */
+:root{
+ --brand-navy:#1F355E;
+ --blue:#2563FF;--aqua:#00D7E6;--purple:#7C5CFC;--coral:#FF7A6B;
+
+ --text:#1F2430;--text-2:#5B6271;--text-3:#6B7280;--on-accent:#FFFFFF;
+ --bg:#FFFFFF;--card:#FFFFFF;--surface:#F5F7FA;--surface-2:#ECEFF4;
+ --border:#E4E7ED;--border-strong:#CDD2DB;--separator:#EDF0F4;
+
+ --accent:var(--blue);--accent-pressed:#1B4FE0;--accent-50:#EEF3FF;--accent-100:#DCE6FF;
+ --aqua-50:#E6FBFC;--purple-50:#F2EFFF;
+ --point:var(--coral);--point-50:#FFF1EF;
+ --danger:#D8453A;--danger-50:#FFF1EF;
+
+ /* Data colours: calories and the three macronutrients. */
+ --chart-calories:var(--blue);--chart-direct:#8A99B0;
+ --chart-carbs:var(--aqua);--chart-protein:var(--purple);--chart-fat:var(--coral);
+
+ --shadow-card:0 1px 2px rgba(31,36,48,.04),0 4px 16px rgba(31,36,48,.05);
+ --shadow-raised:0 1px 2px rgba(31,36,48,.05),0 10px 28px rgba(31,36,48,.08);
+ --shadow-float:0 0 0 .5px rgba(31,36,48,.06),0 12px 32px rgba(31,36,48,.12),0 2px 8px rgba(31,36,48,.05);
+ --glass:rgba(255,255,255,.86);--glass-edge:rgba(255,255,255,.6);
+ --tint-soft:var(--accent-50);
+ --radius:18px;--radius-control:12px;
+
+ /* The Korean system font is named first: some WebKit builds fail to fall back from
+    -apple-system to Hangul glyphs. Windows and Android skip to Segoe/Malgun and Noto/Roboto. */
+ --font:"Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI","Malgun Gothic","Noto Sans KR",Roboto,system-ui,sans-serif;
+
+ /* Names used by earlier stylesheets. */
+ --soft:var(--surface);--muted:var(--text-2);--selected:var(--accent-50);
+ --sage:var(--accent);--sage-soft:var(--accent-50);--sage-text:var(--text);
+ --mustard:var(--point);--warning-soft:var(--point-50);--danger-soft:var(--danger-50);
+ --direct:var(--chart-direct);--shadow:var(--shadow-card);
+ --line:var(--border);--ink:var(--text);
+ /* Toasts stay high-contrast against the page in both themes. */
+ --toast-bg:#1F2430;--toast-text:#FFFFFF;
+ --logo-filter:none;
+ /* Dark-theme accent tints; the accent setting replaces these with its own. */
+ --accent-50-dark:#1A2745;--accent-100-dark:#1B2E5B;--accent-ink-dark:#5182FF;
+
+ color-scheme:light;accent-color:var(--accent);
+ font-family:var(--font);color:var(--text);background:var(--bg);
+ -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+
+/* Dark theme follows the device setting. Surfaces step up in lightness with elevation;
+   text keeps at least 4.5:1 on cards. Accent tints come from the accent setting's dark
+   variants (!important beats the inline light values it also writes). */
+@media (prefers-color-scheme:dark){
+ :root{
+  --text:#ECEEF2;--text-2:#B0B7C3;--text-3:#8F98A6;
+  --bg:#0F1115;--card:#181B21;--surface:#20242B;--surface-2:#282D35;
+  --border:#2E343D;--border-strong:#3C434E;--separator:#252A31;
+  --aqua-50:#123236;--purple-50:#231E3D;--point-50:#3A2320;--danger:#FF6B5F;--danger-50:#3A2320;
+  --accent-50:var(--accent-50-dark)!important;--accent-100:var(--accent-100-dark)!important;--accent-ink:var(--accent-ink-dark)!important;
+  --shadow-card:0 1px 2px rgba(0,0,0,.4);
+  --shadow-raised:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+  --shadow-float:0 0 0 .5px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.5);
+  --glass:rgba(24,27,33,.86);--glass-edge:rgba(255,255,255,.08);
+  --toast-bg:#E9ECF2;--toast-text:#15171C;
+  --logo-filter:brightness(0) invert(.94);
+  color-scheme:dark;
+ }
+}
