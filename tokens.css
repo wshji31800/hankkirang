@@ -6,6 +6,7 @@
    aqua        #00D7E6  sub: charts and quiet highlights
    purple      #7C5CFC  sub/charts
    coral       #FF7A6B  point: notification dots, the logo spark, small alerts
+   green       #16A34A  round checks (eaten, taken, done, picked); stays green whatever the accent
    white       #FFFFFF  base background
    charcoal    #1F2430  text
    The logo mark keeps its own navy #1F355E.
@@ -19,6 +20,7 @@
  --bg:#FFFFFF;--card:#FFFFFF;--surface:#F5F7FA;--surface-2:#ECEFF4;
  --border:#E4E7ED;--border-strong:#CDD2DB;--separator:#EDF0F4;
 
+ --check:#16A34A;--on-check:#FFFFFF;
  --accent:var(--blue);--accent-pressed:#1B4FE0;--accent-50:#EEF3FF;--accent-100:#DCE6FF;
  --aqua-50:#E6FBFC;--purple-50:#F2EFFF;
  --point:var(--coral);--point-50:#FFF1EF;
