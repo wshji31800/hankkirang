@@ -58,11 +58,12 @@
  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 
-/* Dark theme follows the device setting. Surfaces step up in lightness with elevation;
+/* Dark theme follows the device setting unless 화면 모드 in Settings picks light or dark (data-theme on
+   the root, preferences.js). Surfaces step up in lightness with elevation;
    text keeps at least 4.5:1 on cards. Accent tints come from the accent setting's dark
    variants (!important beats the inline light values it also writes). */
 @media (prefers-color-scheme:dark){
- :root{
+ :root:not([data-theme=light]){
   --text:#ECEEF2;--text-2:#B0B7C3;--text-3:#8F98A6;
   --bg:#0F1115;--card:#181B21;--surface:#20242B;--surface-2:#282D35;
   --border:#2E343D;--border-strong:#3C434E;--separator:#252A31;
@@ -76,4 +77,19 @@
   --logo-filter:brightness(0) invert(.94);
   color-scheme:dark;
  }
+}
+/* 화면 모드 다크 (2026-10-04 user decision): the same theme whatever the device is set to. */
+:root[data-theme=dark]{
+ --text:#ECEEF2;--text-2:#B0B7C3;--text-3:#8F98A6;
+ --bg:#0F1115;--card:#181B21;--surface:#20242B;--surface-2:#282D35;
+ --border:#2E343D;--border-strong:#3C434E;--separator:#252A31;
+ --aqua-50:#123236;--purple-50:#231E3D;--point-50:#3A2320;--danger:#FF6B5F;--danger-50:#3A2320;
+ --accent-50:var(--accent-50-dark)!important;--accent-100:var(--accent-100-dark)!important;--accent-ink:var(--accent-ink-dark)!important;
+ --shadow-card:0 1px 2px rgba(0,0,0,.4);
+ --shadow-raised:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35);
+ --shadow-float:0 0 0 .5px rgba(255,255,255,.06),0 12px 32px rgba(0,0,0,.5);
+ --glass:rgba(24,27,33,.86);--glass-edge:rgba(255,255,255,.08);
+ --toast-bg:#E9ECF2;--toast-text:#15171C;
+ --logo-filter:brightness(0) invert(.94);
+ color-scheme:dark;
 }
